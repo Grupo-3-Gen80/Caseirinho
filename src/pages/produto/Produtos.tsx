@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import Produto from "../../models/Produto";
 import UsuarioLogin from "../../models/UsuarioLogin";
 import { usuarioEstaLogado } from "../../utils/usuarioLogado";
-import api from "../../services/api";
+
 
 import Navbar from "../../components/navbar/Navbar"; 
+import { consultar } from "../../services/UsuarioService";
 
 export default function Produtos() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
@@ -25,12 +26,12 @@ export default function Produtos() {
 
   async function buscarProdutos() {
     try {
-      const resposta = await api.get("/produtos", {
-        headers: {
-          Authorization: usuarioLogado.token,
-        },
-      });
-      setProdutos(resposta.data);
+       await consultar('/produtos', setProdutos, {
+           headers: {
+             Authorization: usuarioLogado.token
+           }
+         })
+      
     } catch (error) {
       console.error("Erro ao buscar produtos:", error);
     }
