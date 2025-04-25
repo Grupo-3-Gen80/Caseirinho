@@ -1,7 +1,7 @@
 // src/pages/Login.tsx
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../components/contexts/AuthContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import UsuarioLogin from "../../models/UsuarioLogin";
 
 export default function Login() {
