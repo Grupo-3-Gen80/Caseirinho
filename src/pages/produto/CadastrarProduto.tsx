@@ -4,7 +4,9 @@ import api from "../../services/api";
 import Restaurante from "../../models/Restaurante";
 import UsuarioLogin from "../../models/UsuarioLogin";
 import Produto from "../../models/Produto";
-function CadastrarProduto() {
+import { cadastrar } from "../../services/UsuarioService";
+
+export default function CadastrarProduto() {
   const [produto, setProduto] = useState<Produto>({
     nomeProduto: "",
     foto: "",
@@ -12,7 +14,7 @@ function CadastrarProduto() {
     preco: 0,
     quantidadeVendida: 0,
     restaurante: {
-      id: 0,
+      id: null,
       razaoSocial: "",
       cpf: "",
       endereco: "",
@@ -24,9 +26,7 @@ function CadastrarProduto() {
 
   const [restaurantes, setRestaurantes] = useState<Restaurante[]>([]);
   const navigate = useNavigate();
-  const usuarioLogado: UsuarioLogin = JSON.parse(
-    localStorage.getItem("usuarioLogado") || "{}"
-  );
+  const usuarioLogado: UsuarioLogin = JSON.parse(localStorage.getItem("usuarioLogado") || "{}");
 
   useEffect(() => {
     buscarRestaurantes();
@@ -63,14 +63,21 @@ function CadastrarProduto() {
     }
   }
 
-  async function cadastrarProduto(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     try {
-      await api.post("/produtos", produto, {
-        headers: { Authorization: usuarioLogado.token },
-      });
-      alert("Produto cadastrado com sucesso!");
-      navigate("/produtos");
+      await cadastrar(
+        "/produtos",
+        produto,
+        (respostaDaAPI) => {
+          console.log("Produto cadastrado:", respostaDaAPI);
+          alert("Produto cadastrado com sucesso!");
+          navigate("/produtos");
+        },
+        {
+          headers: { Authorization: usuarioLogado.token },
+        }
+      );
     } catch (error) {
       console.error("Erro ao cadastrar produto:", error);
       alert("Erro ao cadastrar produto");
@@ -84,7 +91,7 @@ function CadastrarProduto() {
       </h2>
 
       <form
-        onSubmit={cadastrarProduto}
+        onSubmit={handleSubmit}
         className="bg-white rounded shadow-md p-6 max-w-xl"
       >
         <input
@@ -122,21 +129,20 @@ function CadastrarProduto() {
           onChange={atualizarEstado}
           className="w-full p-2 border mb-4"
         />
-<select
-  name="restaurante"
-  value={produto.restaurante?.id ?? ""}
-  onChange={selecionarRestaurante}
-  className="w-full p-2 border mb-6"
->
-  <option value="">Selecione um restaurante</option>
-  {restaurantes.map((rest) => (
-    <option key={rest.id} value={produto.restaurante?.id ?? ""}
->
-      {rest.razaoSocial}
-    </option>
-  ))}
-</select>
 
+        <select
+          name="restaurante"
+          value={produto.restaurante?.id ?? ""}
+          onChange={selecionarRestaurante}
+          className="w-full p-2 border mb-6"
+        >
+          <option value="">Selecione um restaurante</option>
+          {restaurantes.map((rest) => (
+            <option key={rest.id} value={produto.restaurante?.id??""}>
+              {rest.razaoSocial}
+            </option>
+          ))}
+        </select>
 
         <button
           type="submit"
@@ -148,5 +154,3 @@ function CadastrarProduto() {
     </section>
   );
 }
-
-export default CadastrarProduto;

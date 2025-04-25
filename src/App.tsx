@@ -12,6 +12,7 @@ import CadastrarProduto from './pages/produto/CadastrarProduto';
 
 
 
+
 function App() {
   return (
     <AuthProvider>
@@ -20,8 +21,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/produtos" element={<Produtos />} />
-          <Route path="/cadastrar-produto" element={<CadastrarProduto />} />
-          <Route path="/editar-produto/:id" element={<EditarProduto />} />
+          <Route path="/cadastrarproduto" element={<CadastrarProduto />} />
+          <Route path="/editarproduto/:id" element={<EditarProduto />} />
           <Route path="/restaurantes" element={<Restaurantes />} />
         </Routes>
       </BrowserRouter>
