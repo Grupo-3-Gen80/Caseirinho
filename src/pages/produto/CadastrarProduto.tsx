@@ -122,20 +122,21 @@ function CadastrarProduto() {
           onChange={atualizarEstado}
           className="w-full p-2 border mb-4"
         />
+<select
+  name="restaurante"
+  value={produto.restaurante?.id ?? ""}
+  onChange={selecionarRestaurante}
+  className="w-full p-2 border mb-6"
+>
+  <option value="">Selecione um restaurante</option>
+  {restaurantes.map((rest) => (
+    <option key={rest.id} value={produto.restaurante?.id ?? ""}
+>
+      {rest.razaoSocial}
+    </option>
+  ))}
+</select>
 
-        <select
-          name="restaurante"
-          value={produto.restaurante?.id || ""}
-          onChange={selecionarRestaurante}
-          className="w-full p-2 border mb-6"
-        >
-          <option value="">Selecione um restaurante</option>
-          {restaurantes.map((rest) => (
-            <option key={rest.id} value={rest.id}>
-              {rest.razaoSocial}
-            </option>
-          ))}
-        </select>
 
         <button
           type="submit"

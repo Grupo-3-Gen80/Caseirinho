@@ -146,7 +146,7 @@ export default function EditarProduto() {
         >
           <option value="">Selecione um restaurante</option>
           {restaurantes.map((rest) => (
-            <option key={rest.id} value={rest.id}>
+            <option key={rest.id} value={produto.restaurante?.id ?? ""}>
               {rest.razaoSocial}
             </option>
           ))}

@@ -5,7 +5,7 @@ import UsuarioLogin from "../../models/UsuarioLogin";
 import { usuarioEstaLogado } from "../../utils/usuarioLogado";
 import api from "../../services/api";
 
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../components/navbar/Navbar"; 
 
 export default function Produtos() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
@@ -27,7 +27,7 @@ export default function Produtos() {
     try {
       const resposta = await api.get("/produtos", {
         headers: {
-          Authorization: `Bearer ${usuarioLogado.token}`,
+          Authorization: usuarioLogado.token,
         },
       });
       setProdutos(resposta.data);
@@ -38,7 +38,7 @@ export default function Produtos() {
 
   return (
     <>
-      <Navbar />
+      <Navbar /> 
       <section className="min-h-screen bg-yellow-50 p-8">
         <h2 className="text-2xl font-bold text-red-700 mb-8">
           Olá, {usuarioLogado.nome || "visitante"}! 🍽️
