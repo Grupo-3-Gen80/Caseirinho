@@ -8,6 +8,7 @@ import { usuarioEstaLogado } from "../../utils/usuarioLogado";
 import Navbar from "../../components/navbar/Navbar";
 import CardProduto from "../../components/cardproduto/CardProduto";
 
+
 import { consultar, deletar } from "../../services/UsuarioService";
 
 export default function Produtos() {
@@ -45,14 +46,10 @@ export default function Produtos() {
           Authorization: usuarioLogado.token,
         },
       });
-      buscarProdutos(); 
+      buscarProdutos();
     } catch (error) {
       console.error("Erro ao deletar produto:", error);
     }
-  }
-
-  function navegarParaNovoProduto() {
-    navigate("/cadastrarproduto"); 
   }
 
   return (
@@ -63,13 +60,6 @@ export default function Produtos() {
           <h2 className="text-2xl font-bold text-red-700">
             Olá, {usuarioLogado.nome || "visitante"}! 🍽️
           </h2>
-
-          <button
-            onClick={navegarParaNovoProduto}
-            className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 flex items-center"
-          >
-            <span className="mr-2">+</span> Novo Produto
-          </button>
         </div>
 
         {produtos.length === 0 ? (
@@ -87,6 +77,8 @@ export default function Produtos() {
             ))}
           </div>
         )}
+
+  
       </section>
     </>
   );

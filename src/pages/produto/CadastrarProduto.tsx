@@ -19,8 +19,8 @@ export default function CadastrarProduto() {
       cpf: "",
       endereco: "",
       status: "",
-      horarioAbertura: { hour: 0, minute: 0, second: 0, nano: 0 },
-      horarioFechamento: { hour: 0, minute: 0, second: 0, nano: 0 },
+      horarioAbertura: "",
+      horarioFechamento:"",
     },
   });
 
