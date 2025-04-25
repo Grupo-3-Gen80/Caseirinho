@@ -1,8 +1,8 @@
 // src/components/contexts/AuthContext.tsx
 import { createContext, ReactNode, useState } from "react";
-import UsuarioLogin from "../../models/UsuarioLogin";
-import {  login } from "../../services/UsuarioService";
-import { ToastAlerta } from "../../utils/ToastAlerta";
+import UsuarioLogin from "../models/UsuarioLogin";
+import {  login } from "../services/UsuarioService";
+import { ToastAlerta } from "../utils/ToastAlerta";
 
 interface AuthContextProps {
   usuario: UsuarioLogin;
