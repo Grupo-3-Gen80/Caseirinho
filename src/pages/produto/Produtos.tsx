@@ -42,15 +42,7 @@ export default function Produtos() {
       console.error("Erro ao buscar produtos:", error);
     }
   }
-  async function deletarProduto(id) {
-    try {
-      await deletar(`/produtos/${id}`);
-     
-    } catch (error) {
-      console.error("Erro ao buscar produtos:", error);
-    }
-  }
-
+ 
 
   return (
     <>
