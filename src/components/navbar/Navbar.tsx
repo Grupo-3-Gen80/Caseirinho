@@ -30,7 +30,7 @@ export default function Navbar() {
               ☰
             </button>
 
-            <Link to="/" className="text-xl font-extrabold text-red-600 tracking-wide">
+            <Link to="/produtos" className="text-xl font-extrabold text-red-600 tracking-wide">
               Caseirinho+
             </Link>
           </div>
