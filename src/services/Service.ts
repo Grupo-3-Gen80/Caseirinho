@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://delivery-tfir.onrender.com'
+    baseURL: import.meta.env.VITE_API_URL
 })
 
 export const consultar = async (url: string, setDados: Function, header: Object) => {
