@@ -11,6 +11,10 @@ import CadastroUsuario from './pages/cadastro/CadastroUsuario';
 import ListaRestaurantes from './components/restaurantes/listaRestaurante/ListarRestaurante';
 import FormRestaurante from './components/restaurantes/formrestaurante/FormRestaurante';
 import DeletarRestaurante from './components/restaurantes/deletarrestaurante/DeletarRestaurante';
+import Sobre from './components/sobre/sobre';
+import DeletarProduto from './pages/produto/DeletarProduto';
+import Contato from './components/contato/contato';
+import Beneficios from './components/beneficios/Beneficios';
 
 
 
@@ -24,8 +28,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/produtos" element={<Produtos />} />
-          <Route path="/cadastrar-produto" element={<CadastrarProduto />} />
+          <Route path="/produtos/cadastrar" element={<CadastrarProduto />} />
           <Route path="/editar-produto/:id" element={<EditarProduto />} />
+          <Route path="/deletar-produto/:id" element={<DeletarProduto />} />
           <Route path="/restaurantes" element={<Restaurantes />} />
           <Route path="/cadastrar" element={<CadastroUsuario />}/>
 
@@ -35,6 +40,10 @@ function App() {
           <Route path="/deletarrestaurante/:id" element={<DeletarRestaurante />} />
           <Route path="/editarrestaurante/:id" element={<FormRestaurante />} />
           {/* link restaurantes */}
+
+          <Route path="/sobre" element={<Sobre/>} />
+          <Route path="/contato" element={<Contato/>} />
+          
         </Routes>
       </BrowserRouter>
     </AuthProvider>

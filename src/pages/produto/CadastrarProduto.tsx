@@ -4,26 +4,21 @@ import api from "../../services/api";
 import Restaurante from "../../models/Restaurante";
 import UsuarioLogin from "../../models/UsuarioLogin";
 import Produto from "../../models/Produto";
+
 function CadastrarProduto() {
   const [produto, setProduto] = useState<Produto>({
+    id: null,
     nomeProduto: "",
     foto: "",
     porcao: 1,
     preco: 0,
     quantidadeVendida: 0,
-    restaurante: {
-      id: 0,
-      razaoSocial: "",
-      cpf: "",
-      endereco: "",
-      status: "",
-      horarioAbertura: { hour: 0, minute: 0, second: 0, nano: 0 },
-      horarioFechamento: { hour: 0, minute: 0, second: 0, nano: 0 },
-    },
+    restaurante: {} as Restaurante,
   });
 
   const [restaurantes, setRestaurantes] = useState<Restaurante[]>([]);
   const navigate = useNavigate();
+
   const usuarioLogado: UsuarioLogin = JSON.parse(
     localStorage.getItem("usuarioLogado") || "{}"
   );
@@ -46,7 +41,7 @@ function CadastrarProduto() {
   function atualizarEstado(e: React.ChangeEvent<HTMLInputElement>) {
     setProduto({
       ...produto,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.type === "number" ? Number(e.target.value) : e.target.value,
     });
   }
 
@@ -78,14 +73,14 @@ function CadastrarProduto() {
   }
 
   return (
-    <section className="min-h-screen bg-yellow-50 p-8">
-      <h2 className="text-2xl font-bold text-red-700 mb-6">
+    <section className="min-h-screen bg-yellow-50 p-8 pt-20">
+      <h2 className="text-2xl font-bold text-red-700 mb-6 text-center">
         Cadastrar Novo Produto
       </h2>
 
       <form
         onSubmit={cadastrarProduto}
-        className="bg-white rounded shadow-md p-6 max-w-xl"
+        className="bg-white rounded shadow-md p-6 max-w-xl mx-auto"
       >
         <input
           type="text"
@@ -94,6 +89,7 @@ function CadastrarProduto() {
           value={produto.nomeProduto}
           onChange={atualizarEstado}
           className="w-full p-2 border mb-4"
+          required
         />
 
         <input
@@ -112,6 +108,7 @@ function CadastrarProduto() {
           value={produto.porcao}
           onChange={atualizarEstado}
           className="w-full p-2 border mb-4"
+          required
         />
 
         <input
@@ -121,32 +118,45 @@ function CadastrarProduto() {
           value={produto.preco}
           onChange={atualizarEstado}
           className="w-full p-2 border mb-4"
+          step="0.01"
+          required
         />
-<select
-  name="restaurante"
-  value={produto.restaurante?.id ?? ""}
-  onChange={selecionarRestaurante}
-  className="w-full p-2 border mb-6"
->
-  <option value="">Selecione um restaurante</option>
-  {restaurantes.map((rest) => (
-    <option key={rest.id} value={produto.restaurante?.id ?? ""}
->
-      {rest.razaoSocial}
-    </option>
-  ))}
-</select>
 
-
-        <button
-          type="submit"
-          className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 w-full"
+        <select
+          name="restaurante"
+          value={produto.restaurante?.id ?? ""}
+          onChange={selecionarRestaurante}
+          className="w-full p-2 border mb-6"
+          required
         >
-          Cadastrar
-        </button>
+          <option value="">Selecione um restaurante</option>
+          {restaurantes.map((rest) => (
+            <option key={rest.id} value={rest.id}>
+              {rest.razaoSocial}
+            </option>
+          ))}
+        </select>
+        <div className='flex gap-10'>
+
+
+
+          <span className="rounded text-slate-100 bg-red-800 
+                     hover:bg-red-400 w-1/2 py-2 mx-auto flex justify-center mt-5 "
+            onClick={() => navigate("/produtos")}>
+            Voltar
+          </span>
+          <button
+            type="submit"
+            className="rounded text-slate-100 bg-red-800 
+                     hover:bg-red-400 w-1/2 py-2 mx-auto flex justify-center mt-5"
+          >
+            Cadastrar
+          </button>
+        </div>
       </form>
     </section>
   );
 }
 
 export default CadastrarProduto;
+

@@ -8,12 +8,12 @@ interface CardRestaurantesProps{
 function CardRestaurantes({restaurante}: CardRestaurantesProps) {
     return (
         <>
-            <div className=' bg-slate-200 border flex flex-col rounded-2xl overflow-hidden justify-between'>
-                <header className='py-2 px-6 bg-red-800 text-white font-bold text-2xl'>
+            <div className="bg-white shadow-md rounded-lg p-4 text-center">
+                <header className=' py-2 px-6 bg-red-800 text-white font-bold text-2xl  rounded'>
                     Restaurante
                 </header>
-                <p className='p-8 pb-5 text-3xl bg-slate-200 h-full text-center'>{restaurante.razaoSocial}</p>
-                <div className='flex bg-slate-200 justify-center align-middle gap-10 justify-between mb-2'>
+                <p className='p-8 pb-5 text-3xl  text-center'>{restaurante.razaoSocial}</p>
+                <div className='flex justify-center align-middle gap-10 justify-between mb-2'>
                     <div>
                         <p >{restaurante.endereco}</p>
                         <p className= {restaurante.status === "Aberto" ? "text-green-700 font-bold" : "text-red-700 font-bold"}>
@@ -25,16 +25,16 @@ function CardRestaurantes({restaurante}: CardRestaurantesProps) {
                     </div>
                     
                 </div>
-                <div className="flex">
+                <div className="flex p-5">
                     <Link to={`/editarrestaurante/${restaurante.id}`} 
-                        className='w-full text-slate-100 bg-yellow-400 hover:bg-orange-700 
-                            flex items-center justify-center py-2'>
-                        <button>Editar</button>
+                       className="flex justify-center w-[50%]">
+                        <button  className="px-3 rounded w-[80%]  h-[2rem] bg-amber-500 text-white hover:bg-amber-400 cursor-pointer ">Editar</button>
                     </Link>
 
-                    <Link to={`/deletarrestaurante/${restaurante.id}`} className='text-slate-100 bg-red-400 hover:bg-red-700 w-full 
-                        flex items-center justify-center'>
-                        <button>Deletar</button>
+                    <Link to={`/deletarrestaurante/${restaurante.id}`}
+                    className="flex justify-center w-[50%]"
+                   >
+                        <button className="px-3 rounded w-[80%] h-[2rem] bg-red-700 text-white hover:bg-red-500 cursor-pointer  ">Deletar</button>
                     </Link>
                 </div>
 

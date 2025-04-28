@@ -74,6 +74,7 @@ export default function Navbar() {
               <Link to="/restaurantes" onClick={() => setMenuAberto(false)}>🍽️ Restaurantes</Link>
               <Link to="/sobre" onClick={() => setMenuAberto(false)}>📖 Saiba Mais</Link>
               <Link to="/contato" onClick={() => setMenuAberto(false)}>📞 Contato</Link>
+              
               <button
                 onClick={() => {
                   localStorage.clear();

@@ -15,7 +15,7 @@ export default function Restaurantes() {
   }
 
   return (
-    <>
+    <div className="bg-yellow-50">
       <Navbar />
       <div className="p-6 pt-20">
         <div className="flex align-middle justify-between text-center">
@@ -36,6 +36,6 @@ export default function Restaurantes() {
         {/* Aqui entraria a listagem real filtrada ou mockada */}
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

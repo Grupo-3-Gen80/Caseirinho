@@ -7,20 +7,19 @@ import UsuarioLogin from "../../models/UsuarioLogin";
 
 export default function EditarProduto() {
   const [produto, setProduto] = useState<Produto>({
-    id: 0,
+    id: null,
     nomeProduto: "",
     foto: "",
     porcao: 1,
     preco: 0,
     quantidadeVendida: 0,
     restaurante: {
-      id: 0,
+      id: null,
       razaoSocial: "",
       cpf: "",
       endereco: "",
       status: "",
-      horarioAbertura: { hour: 0, minute: 0, second: 0, nano: 0 },
-      horarioFechamento: { hour: 0, minute: 0, second: 0, nano: 0 },
+
     },
   });
 
@@ -98,9 +97,16 @@ export default function EditarProduto() {
   }
 
   return (
-    <section className="min-h-screen bg-yellow-50 p-8 flex items-center justify-center">
+    
+    <section className="min-h-screen bg-yellow-50 p-8 pt-20">
+  <div className="text-center mb-8">
+    <h1 className="text-4xl font-bold text-red-700">Editar Produtos</h1>
+  </div>
+
+  <div className="flex items-center justify-center">
       <form onSubmit={atualizarProduto} className="bg-white p-8 rounded shadow-md w-full max-w-xl">
-        <h2 className="text-2xl font-bold text-red-700 mb-6">Editar Produto</h2>
+        
+        
 
         <input
           type="text"
@@ -151,14 +157,25 @@ export default function EditarProduto() {
             </option>
           ))}
         </select>
+        <div className='flex gap-10'>
 
-        <button
-          type="submit"
-          className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 w-full"
-        >
-          Atualizar
-        </button>
+
+
+          <span className="rounded text-slate-100 bg-red-800 
+                               hover:bg-red-400 w-1/2 py-2 mx-auto flex justify-center mt-5 "
+            onClick={() => navigate("/produtos")}>
+            Voltar
+          </span>
+          <button
+            type="submit"
+            className="rounded text-slate-100 bg-red-800 
+                               hover:bg-red-400 w-1/2 py-2 mx-auto flex justify-center mt-5"
+          >
+            Atualizar
+          </button>
+        </div>
       </form>
+      </div>
     </section>
   );
 }

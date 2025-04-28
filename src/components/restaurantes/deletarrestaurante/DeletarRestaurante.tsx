@@ -42,6 +42,7 @@ function DeletarRestaurante() {
         if (id !== undefined) {
             buscarPorId(id)
         }
+   
     }, [id])
 
     async function deletarRestaurante() {
@@ -73,19 +74,20 @@ function DeletarRestaurante() {
     }
     
     return (
-        <div className='container w-1/3 mx-auto'>
+        <div className='h-[100vh] py-10 bg-yellow-50 '>
+        <div className=' container w-1/3 mx-auto'>
             {/* <h1 className='text-4xl text-center my-4'>Deletar restaurante</h1> */}
             <h2 className="text-4xl font-bold text-center text-red-700 my-4 align-middle">Deletar Restaurantes</h2>
             <p className='text-center font-semibold mb-4'>
                 Você tem certeza de que deseja apagar o restaurante a seguir?</p>
-                <div className=' bg-slate-200 border flex flex-col rounded-2xl overflow-hidden justify-between'>
-                <header className='py-2 px-6 bg-red-800 text-white font-bold text-2xl'>
+                <div className="bg-white shadow-md rounded-lg p-4 text-center mt-10">
+                <header className=' py-2 px-6 bg-red-800 text-white font-bold text-2xl  rounded'>
                     Restaurante
                 </header>
-                <p className='p-8 pb-5 text-3xl bg-slate-200 h-full text-center'>{restaurante.razaoSocial}</p>
-                <div className='flex bg-slate-200 justify-center align-middle gap-10 justify-between mb-2'>
+                <p className='p-8 pb-5 text-3xl  h-full text-center text-red-700'>{restaurante.razaoSocial}</p>
+                <div className='flex justify-center  align-middle gap-10 justify-between mb-2 '>
                     <div>
-                        <p >{restaurante.endereco}</p>
+                    <p >{restaurante.endereco}</p>
                         <p className= {restaurante.status === "Aberto" ? "text-green-700 font-bold" : "text-red-700 font-bold"}>
                         {restaurante.status}
                         </p>
@@ -95,15 +97,15 @@ function DeletarRestaurante() {
                     </div>
                     
                 </div>
-                <div className="flex">
+                <div className="flex gap-5 p-5">
+                
                     <button 
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2'
+                        className="px-3 rounded w-[80%]  h-[2rem] bg-amber-500 text-white hover:bg-amber-400"
                         onClick={retornar}>
                         Não
                     </button>
                     <button 
-                        className='w-full text-slate-100 bg-blue-500 
-                                   hover:bg-blue-700 flex items-center justify-center'
+                        className="px-3 rounded w-[80%] h-[2rem] bg-red-700 text-white hover:bg-red-500"
                                    onClick={deletarRestaurante}>
                         {isLoading ?
                             <RotatingLines
@@ -118,6 +120,7 @@ function DeletarRestaurante() {
                     </button>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

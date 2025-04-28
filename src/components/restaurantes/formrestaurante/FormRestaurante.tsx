@@ -45,13 +45,13 @@ function FormRestaurante() {
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
         const { name, value } = e.target;
-    
+
         setRestaurante({
             ...restaurante,
             [name]: value,
         });
     }
-    
+
 
     function retornar() {
         navigate("/restaurantes")
@@ -95,13 +95,15 @@ function FormRestaurante() {
         retornar()
     }
 
-  return (
-        <div className="container flex flex-col items-center justify-center mx-auto">
+    return (
+        <div className="pb-12 pt-2 bg-yellow-50 flex flex-col items-center justify-center mx-auto">
+
+
             <h1 className="text-4xl text-center my-8 font-bold text-red-700 mb-4 align-middle">
                 {id === undefined ? 'Cadastrar Restaurante' : 'Editar Restaurante'}
             </h1>
 
-            <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoRestaurante}>
+            <form className="bg-white p-8 rounded shadow-md w-full max-w-xl" onSubmit={gerarNovoRestaurante}>
                 <div className="flex flex-col gap-2">
                     <label htmlFor="razaoSocial">Nome do Restaurante</label>
                     <input
@@ -143,7 +145,7 @@ function FormRestaurante() {
                         name="horarioAbertura"
                         placeholder="hh:mm:ss"
                         className="border-2 border-slate-700 rounded p-2"
-                        value={restaurante.horarioAbertura?? ""}
+                        value={restaurante.horarioAbertura ?? ""}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
@@ -158,22 +160,35 @@ function FormRestaurante() {
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
-                <button
-                    className="rounded text-slate-100 bg-red-400 
-                               hover:bg-red-800 w-1/2 py-2 mx-auto flex justify-center"
-                    type="submit">
-                    {isLoading ?
-                        <RotatingLines
-                            strokeColor="white"
-                            strokeWidth="5"
-                            animationDuration="0.75"
-                            width="24"
-                            visible={true}
-                        /> :
-                        <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
+                <div className='flex gap-10'>
 
-                    }
-                </button>
+                    <span className="rounded text-slate-100 bg-red-800 
+                               hover:bg-red-400 w-1/2 py-2 mx-auto flex justify-center mt-5 " 
+                               onClick={retornar}>
+                        Voltar
+                    </span>
+
+
+                    <button
+                        className="rounded text-slate-100 bg-red-800 
+                               hover:bg-red-400 w-1/2 py-2 mx-auto flex justify-center mt-5 "
+                        type="submit">
+                        {isLoading ?
+                            <RotatingLines
+                                strokeColor="white"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="24"
+                                visible={true}
+                            /> :
+                            <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
+
+                        }
+                    </button>
+
+                </div>
+
+
             </form>
         </div>
     )
