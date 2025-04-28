@@ -13,6 +13,7 @@ import DeletarRestaurante from './components/restaurantes/deletarrestaurante/Del
 import Sobre from './components/sobre/sobre';
 import DeletarProduto from './pages/produto/DeletarProduto';
 import Contato from './components/contato/contato';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -23,6 +24,7 @@ import Contato from './components/contato/contato';
 function App() {
   return (
     <AuthProvider>
+      <ToastContainer/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
