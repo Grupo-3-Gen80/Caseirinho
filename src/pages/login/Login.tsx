@@ -36,7 +36,9 @@ export default function Login() {
         onSubmit={enviarFormulario}
         className="bg-white p-8 rounded-lg shadow-md w-full max-w-md"
       >
-        <h1 className="text-2xl font-bold text-red-700 mb-6 text-center">Entrar no Caseirinho+</h1>
+        <h1 className="text-2xl font-bold text-red-700 mb-6 text-center">
+          Entrar no Caseirinho+
+        </h1>
 
         <input
           type="text"
@@ -58,7 +60,8 @@ export default function Login() {
           required
         />
 
-        <button onClick={() => navigate("/login")}
+        <button
+          onClick={() => navigate("/login")}
           type="submit"
           className="bg-red-600 text-white w-full py-3 rounded hover:bg-red-700 transition"
         >
@@ -67,12 +70,14 @@ export default function Login() {
 
         <p className="text-sm mt-4 text-center text-gray-600">
           Ainda não tem conta?{" "}
-          <a href="/cadastrar" className="text-red-600 font-bold hover:underline">
+          <button
+            onClick={() => (window.location.href = "/cadastrar")}
+            className="text-red-600 font-bold hover:underline bg-transparent border-none p-0 cursor-pointer"
+          >
             Cadastre-se
-          </a>
+          </button>
         </p>
       </form>
     </section>
   );
 }
-
