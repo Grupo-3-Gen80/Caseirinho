@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { usuarioEstaLogado } from "../../utils/usuarioLogado";
-import Usuario from '../../models/Usuario';
 
 export default function Navbar() {
   const [menuAberto, setMenuAberto] = useState(false);

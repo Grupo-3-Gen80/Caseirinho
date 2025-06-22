@@ -3,7 +3,7 @@ import UsuarioLogin from "../models/UsuarioLogin";
 
 // Criação da instância com baseURL do .env
 const api = axios.create({
-  baseURL: 'https://delivery-tfir.onrender.com'
+  baseURL: 'https://delivery-r4py.onrender.com'
 });
 
 // ✅ Cadastro de novo usuário (sem autenticação)
