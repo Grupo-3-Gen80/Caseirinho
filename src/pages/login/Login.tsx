@@ -58,7 +58,7 @@ export default function Login() {
           required
         />
 
-        <button
+        <button onClick={() => navigate("/login")}
           type="submit"
           className="bg-red-600 text-white w-full py-3 rounded hover:bg-red-700 transition"
         >

@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://delivery-tfir.onrender.com'
+  baseURL: 'https://delivery-r4py.onrender.com'
 });
 
 api.interceptors.request.use((config) => {
